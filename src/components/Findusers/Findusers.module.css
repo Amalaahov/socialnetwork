@@ -1,0 +1,16 @@
+
+
+  .item{
+    color: orangered;
+    background-color: white;
+    padding: 10px;
+    margin-top: auto;
+  }
+
+  .item img{
+    width: 150px;
+  }
+  .selectedPage
+  {
+    font-weight: bold;
+  }

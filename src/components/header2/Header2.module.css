@@ -1,0 +1,30 @@
+.header {
+    grid-area: hh;
+    background-color: #1c1d22;
+    color: white;
+    font-style: italic;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+
+  }
+  .header img{
+    width: 60px;
+    height: 40px;
+  }
+
+  .item{
+      color:white;
+      text-decoration: none;
+      margin: 100;
+      font-style: normal;
+      margin-right: 10px;
+  }
+
+  .activeLink{
+    color:goldenrod;
+  }
+
+  .hello
+  {
+      margin: 0 auto;
+  }

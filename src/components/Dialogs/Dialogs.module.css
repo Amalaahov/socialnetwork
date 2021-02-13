@@ -1,0 +1,26 @@
+.dialogs {
+    grid-area: c;
+    background-color:#ffffff;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+  }
+
+  .item{
+    color: #ff4500;
+
+    text-decoration: none;
+  }
+
+  .item img{
+    width: 50px;
+  }
+
+  .active
+  {
+    color: goldenrod;
+  }
+  .textarea
+  {
+      width: 200px;
+  }
