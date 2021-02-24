@@ -12,13 +12,7 @@ let initialState = {
 
 
         postData: [
-            {
-                id: 1,
-                message: 'Как твои дела?',
-                likesCount: '11',
-                name: 'Скарлет Йоханссон',
-                img: 'https://thumbs.dfs.ivi.ru/storage33/contents/f/b/722ce30ba1a228f9d1aa5650db3aea.jpg'
-            },
+
             {
                 id: 2,
                 message: 'Привет!',

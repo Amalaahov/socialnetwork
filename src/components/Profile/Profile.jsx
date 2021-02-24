@@ -21,8 +21,7 @@ const Profile = () => {
           <div>Подписчиков:</div>
         <div><b>155</b></div>
         <br></br>
-            <hr></hr>
-       <div className='item'><b>Посмотреть профиль</b></div>
+
       </nav>
     )
 }

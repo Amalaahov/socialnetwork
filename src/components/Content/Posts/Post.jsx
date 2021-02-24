@@ -7,7 +7,7 @@ import classes from './Post.module.css';
 const Post = (props) => {
 
     return(
-
+<div>
     <div className={classes.content}>
 
 
@@ -15,12 +15,15 @@ const Post = (props) => {
 
 
 
-        <div className={classes.item}><img  src={props.img}/>{props.name}</div>
+        <div className={classes.item}><h3><img  src={props.img}/>{props.name}</h3></div>
         <div >{props.message}</div>
         <div className={classes.item.like}><img width="15" src='https://c0.klipartz.com/pngpicture/540/262/gratis-png-corazon-blanco-redes-sociales-facebook-como-boton-corazon-emoticon-facebook-vivo-amor-thumbnail.png'></img>{props.likesCount}</div>
 
 
+
       </div>
+    <br></br>
+</div>
     )
 }
 

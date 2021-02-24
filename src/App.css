@@ -2,7 +2,7 @@
 
   background-color:#365d97;
   display: grid;
-  width: 1500px;
+  width: auto;
   margin: 0 auto;
   grid-template-areas: 
   "h h"
@@ -16,7 +16,7 @@
 }
 
 .app-wrapper-content{
-  grid-area: c;
+
 }
 
 

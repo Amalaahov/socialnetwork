@@ -1,19 +1,24 @@
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import dialogreducer from "./reducer/dialogreducer";
 import usersreducer from "./reducer/usersreducer";
 import wallreducer from "./reducer/wallreducer";
+import UsersProfilereducer from './reducer/usersprofilereducer'
+import authReducer from "./reducer/authreducer";
+import thunkMiddleware from "redux-thunk";
 
 
 
 let reducers = combineReducers({
  MessengerData: dialogreducer,
    WallDatas:  wallreducer,
-   usersPage: usersreducer
+   usersPage: usersreducer,
+    UsersProfile: UsersProfilereducer,
+    auth: authReducer
     }
 
 )
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 window.store = store;
 

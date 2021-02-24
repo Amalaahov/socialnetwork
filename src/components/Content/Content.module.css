@@ -1,13 +1,34 @@
 .content {
     grid-area: c;
-    background-color:#ffffff;
+    background-color:#7ae6e9;
     padding: 20px;
-  }
+    font-family: airfool;
+
+
+}
 
   .item{
-    color: BLACK;
+      font-family: airfool;
+
+      color: BLACK;
   }
 
   .item img{
     width: 50px;
   }
+
+  .textarea
+  {
+      font-family: airfool;
+      border-radius: 10px;
+      border-color: #a13c9c;
+      border-width: 2px;
+      resize: none;
+  width: 100%;
+      height: 5vw;
+
+  }
+@font-face {
+    font-family: 'airfool';
+    src: local('MyFont'), url('../../assets/fonts/Airfool.otf') format('woff');
+}

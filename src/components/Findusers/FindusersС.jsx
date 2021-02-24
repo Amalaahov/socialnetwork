@@ -1,7 +1,11 @@
 import React from 'react';
 import classes from './Findusers.module.css';
-import * as axios from 'axios';
+
 import userPhoto from '../../assets/image/user_pic.png';
+import {NavLink} from "react-router-dom";
+import preloader from "../../assets/image/preloader.svg";
+import {FollowUser, UnfollowUser} from "../../api/api";
+
 
 
 
@@ -9,17 +13,13 @@ class Findusers extends React.Component{
 
        
 componentDidMount(){
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-        .then(response => {this.props.setUsers(response.data.items);  this.props.setTotalCount(response.data.totalCount);});
+
+    this.props.getUsersThunk(this.props.currentPage,this.props.pageSize);
 }
 onPageChanged = (pageNumber) =>
 {
-        this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-        .then(response => {
-                this.props.setUsers(response.data.items);
-               
-         });
+    this.props.pageChangeThunk(pageNumber,this.props.pageSize);
+
 
 }
         render() {
@@ -29,27 +29,50 @@ onPageChanged = (pageNumber) =>
              {
                      pages.push(i);
              }
-               return <div className={classes.item}>
-                    
+
+               return <>
+                   {this.props.isFetching ? <img alt='preloader' src={preloader}/>: null}
+                   <div className={classes.item}>
+
                        {pages.map(p => <span onClick={ () =>{this.onPageChanged(p);}} className={this.props.currentPage === p && classes.selectedPage}>{p} </span>)}
                         {
-  
+
                         this.props.users.map(u => <div key={u.id}>
-                            <div><img src={u.photos.small != null ? u.photos.small: userPhoto}></img>
-                <div>{u.name}</div>
-                
+                            <div className={classes.userItem}><NavLink to={'users/'+ u.id}>
+                               <div> <img alt='ava' src={u.photos.small != null ? u.photos.small: userPhoto} /></div>
+                            </NavLink>
+                <div>
+                    <div><NavLink className={classes.user} to={'users/'+ u.id}>{u.name}</NavLink></div>
+
                 <div>{u.status}</div>
+                    <div>111</div>
+                </div>
 
 
-                {u.followed
-                ? <button onClick={ () => {this.props.unfollow(u.id)  } }>Unfollow</button>
-                : <button onClick={ () => {this.props.follow(u.id)  } }>Follow</button> }
+                                {u.followed
+                                    ? <button onClick={ () =>  {
+                                        UnfollowUser(u.id ).then(response => {
+                                                if (response.data.resultCode === 0)
+                                                {this.props.unfollow(u.id);}
+
+                                            });}
+                                    }>Unfollow</button>
+                                    : <button onClick={ () =>  {
+                                        FollowUser(u.id)
+                                            .then(response => {
+                                                if (response.data.resultCode === 0)
+                                                {this.props.follow(u.id);}
+
+                                            });}
+                                    }>follow</button> }
                         </div>
+                            <hr/>
                         </div>)
 
 
                                   }
                 </div>
+                   </>
         }
 }
 

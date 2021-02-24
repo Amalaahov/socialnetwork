@@ -1,7 +1,15 @@
 
 import { connect } from 'react-redux';
 import Findusers from './FindusersС.jsx';
-import {setCurrentPageAC, setTotalCountAC, followAC, setUsersAC, unfollowAC } from '../../redux/reducer/usersreducer';
+import {
+    ToggleFetchingAC,
+    setCurrentPageAC,
+    setTotalCountAC,
+    followAC,
+    setUsersAC,
+    unfollowAC,
+    getUsersThunk, pageChangeThunk
+} from '../../redux/reducer/usersreducer';
 
 
 
@@ -12,22 +20,27 @@ let mapStateToProps = (state) =>{
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching
         
     }
 }
 
 
 
-let mapDispatchToProps = (dispatch) =>{
+/*let mapDispatchToProps = (dispatch) =>{
 return{
+    ToggleFetching: (isFetching) =>
+    {
+        dispatch(ToggleFetchingAC(isFetching));
+    },
     follow: (userId) =>
     {
         dispatch(followAC(userId));
     },
     unfollow: (userId) =>
     {
-dispatch (unfollowAC(userId));
+        dispatch (unfollowAC(userId));
     },
     setUsers: (users) =>
     {
@@ -42,7 +55,18 @@ dispatch (unfollowAC(userId));
         dispatch(setTotalCountAC(totalCount));
     }
 }
-}
+}*/
 
 
-export default connect(mapStateToProps, mapDispatchToProps) (Findusers);
+export default connect(mapStateToProps,
+    {
+        ToggleFetching:ToggleFetchingAC,
+        follow:followAC,
+        unfollow:unfollowAC,
+        setUsers:setUsersAC,
+        setCurrentPage:setCurrentPageAC,
+        setTotalCount: setTotalCountAC,
+        getUsersThunk: getUsersThunk,
+        pageChangeThunk: pageChangeThunk,
+        }
+    ) (Findusers);

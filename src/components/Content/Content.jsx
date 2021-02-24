@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Content.module.css';
 import Posts from './Posts/Post';
+import addpostbtn from '../../assets/image/addpostbtn.png';
 
 
 
@@ -25,10 +26,11 @@ props.UpdateNewText(text);
 
        
 
-        <div><textarea  onChange={postChange} ref={newPostElement} value={props.WallData.newTextPost}/></div>
-        <div><button onClick={addPost}>ADD POST</button></div>
+        <div><textarea className={classes.textarea} onChange={postChange} ref={newPostElement} value={props.WallData.newTextPost}/> <img onClick={addPost} src={addpostbtn}/></div>
+
 
         <div><Posts  postData={props.WallData.postData}/></div>
+
 
 
           
