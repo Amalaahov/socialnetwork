@@ -8,8 +8,10 @@ import {
     followAC,
     setUsersAC,
     unfollowAC,
-    getUsersThunk, pageChangeThunk
+    getUsersThunk, pageChangeThunk, UnfollowUserThunk, FollowUserThunk
 } from '../../redux/reducer/usersreducer';
+import {Redirect} from "react-router-dom";
+import {AuthRedirect} from "../../hoc/AuthRedirect";
 
 
 
@@ -21,42 +23,12 @@ let mapStateToProps = (state) =>{
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        isAuth: state.auth.isAuth
         
     }
 }
-
-
-
-/*let mapDispatchToProps = (dispatch) =>{
-return{
-    ToggleFetching: (isFetching) =>
-    {
-        dispatch(ToggleFetchingAC(isFetching));
-    },
-    follow: (userId) =>
-    {
-        dispatch(followAC(userId));
-    },
-    unfollow: (userId) =>
-    {
-        dispatch (unfollowAC(userId));
-    },
-    setUsers: (users) =>
-    {
-        dispatch(setUsersAC(users));
-    },
-    setCurrentPage: (pageNumber) =>
-    {
-        dispatch(setCurrentPageAC(pageNumber));
-    },
-    setTotalCount: (totalCount) =>
-    {
-        dispatch(setTotalCountAC(totalCount));
-    }
-}
-}*/
-
+let AuthRedirectComponent = AuthRedirect(Findusers);
 
 export default connect(mapStateToProps,
     {
@@ -68,5 +40,7 @@ export default connect(mapStateToProps,
         setTotalCount: setTotalCountAC,
         getUsersThunk: getUsersThunk,
         pageChangeThunk: pageChangeThunk,
+        UnfollowThunk: UnfollowUserThunk,
+        FollowThunk: FollowUserThunk
         }
-    ) (Findusers);
+    ) (AuthRedirectComponent);

@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Content.module.css';
 import Posts from './Posts/Post';
 import addpostbtn from '../../assets/image/addpostbtn.png';
+import {Redirect} from "react-router-dom";
 
 
 

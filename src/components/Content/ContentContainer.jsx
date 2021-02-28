@@ -4,6 +4,9 @@
 import {addPostActionCreator, UpdateTextPostActionCreator} from "../../redux/state";
 import Content from "./Content";
 import {connect} from "react-redux";
+import {AuthRedirect} from "../../hoc/AuthRedirect";
+import {compose} from "redux";
+
 
 
 
@@ -11,7 +14,8 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) =>
 {
     return {
-        WallData: state.WallDatas
+        WallData: state.WallDatas,
+        isAuth: state.auth.isAuth
     }
 
 }
@@ -30,6 +34,7 @@ UpdateNewText : (text)=>
     }
 }
 
-const ContentContainer = connect (mapStateToProps,mapDispatchToProps) (Content);
-
-export default ContentContainer;
+export default compose(
+    connect (mapStateToProps,mapDispatchToProps),
+    AuthRedirect
+)(Content);

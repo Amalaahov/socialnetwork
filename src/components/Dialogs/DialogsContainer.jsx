@@ -4,6 +4,8 @@ import {UpdateMessageTextCreator} from "../../redux/state";
 import {AddMessageCreator} from "../../redux/state";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
+import {AuthRedirect} from "../../hoc/AuthRedirect";
+
 
 
 
@@ -11,7 +13,8 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) =>
 {
    return    {
-        MessengerData: state.MessengerData
+        MessengerData: state.MessengerData,
+       isAuth: state.auth.isAuth
     }
 }
 let mapDispatchToProps = (dispatch) =>
@@ -27,6 +30,8 @@ dispatch(AddMessageCreator());
         }
     }
 }
-const DialogsContainer = connect (mapStateToProps,mapDispatchToProps) (Dialogs);
+
+let AuthRedirectComponent = AuthRedirect(Dialogs);
+const DialogsContainer = connect (mapStateToProps,mapDispatchToProps) (AuthRedirectComponent);
 
 export default DialogsContainer;

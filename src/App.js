@@ -18,6 +18,7 @@ import UsersProfileC from "./components/UsersProfile/UsersProfileC";
 
 import Findusers_container from './components/Findusers/Findusers_container';
 import HeaderContainer from "./components/Header/HeaderContainter";
+import Login from "./components/LoginPage/Login";
 
 
 
@@ -42,11 +43,12 @@ const App = (props) => {
       <Profile />
       <div className='app-wrapper-content'>
     <Route path='/dialogs' render={  () => <DialogsContainer   />}  />
+        <Route path='/login' render={  () => <Login   />}  />
     <Route path='/content' render={ () => <ContentContainer />} />
     <Route path='/findusers' render={ () => <Findusers_container />} />
         <Route path='/users/:userId' render={ () => <UsersProfileC />} />
     <Route path='/news' render={  () => <News />} />
-    <Route path='/music' component={Music} />
+    <Route path='/music' render={ () => <Music />} />
         <Route path='/settings' render={  () => <Settings/>} />
 
 

@@ -5,8 +5,12 @@ import React from 'react';
 
 
 
-const Music = (props) => {
-return(
+
+
+const Music = () => {
+
+
+    return(
     <div className='music'>
 
 

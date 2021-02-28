@@ -1,4 +1,4 @@
-import {FindUsers} from "../../api/api";
+import {FindUsers, FollowUser, pageChange, UnfollowUser} from "../../api/api";
 import * as axios from "axios";
 
 const FOLLOW = 'FOLLOW';
@@ -106,7 +106,7 @@ export const pageChangeThunk = (pageNumber,pageSize) =>
         {
            dispatch(ToggleFetchingAC(true));
           dispatch(setCurrentPageAC(pageNumber));
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${pageSize}`)
+            pageChange(pageNumber,pageSize)
                 .then(data => {
                     dispatch(setUsersAC(data.data.items));
 
@@ -114,3 +114,28 @@ export const pageChangeThunk = (pageNumber,pageSize) =>
             dispatch(ToggleFetchingAC(false));
         }
     }
+
+
+    export const UnfollowUserThunk = (id) =>
+    {
+        return(dispatch) =>
+        {
+            UnfollowUser(id ).then(data => {
+                if (data.data.resultCode === 0)
+                dispatch(unfollowAC(id));
+
+            });
+        }
+    }
+
+export const FollowUserThunk = (id) =>
+{
+    return(dispatch) =>
+    {
+        FollowUser(id ).then(data => {
+            if (data.data.resultCode === 0)
+                dispatch(followAC(id));
+
+        });
+    }
+}

@@ -30,3 +30,8 @@ export const UnfollowUser = (userId) =>
 {
     return instance.delete('follow/'+userId)
 }
+
+export const pageChange = (pageNumber,pageSize) =>
+{
+    return instance.get ('users?page='+pageNumber+'&count='+pageSize)
+}
