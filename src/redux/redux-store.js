@@ -4,6 +4,7 @@ import usersreducer from "./reducer/usersreducer";
 import wallreducer from "./reducer/wallreducer";
 import UsersProfilereducer from './reducer/usersprofilereducer'
 import authReducer from "./reducer/authreducer";
+import ProfileReducer from "./reducer/profilereducer";
 import thunkMiddleware from "redux-thunk";
 
 
@@ -13,7 +14,8 @@ let reducers = combineReducers({
    WallDatas:  wallreducer,
    usersPage: usersreducer,
     UsersProfile: UsersProfilereducer,
-    auth: authReducer
+    ProfieInfo: ProfileReducer,
+    auth: authReducer,
     }
 
 )

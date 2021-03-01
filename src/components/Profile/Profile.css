@@ -15,6 +15,10 @@
       border-radius: 15px;
 
     }
+    .settings
+    {
+        width: 20px;
+    }
 @font-face {
     font-family: 'airfool';
     src: local('MyFont'), url('../../assets/fonts/Airfool.otf') format('woff');

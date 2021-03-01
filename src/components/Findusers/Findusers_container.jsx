@@ -10,7 +10,7 @@ import {
     unfollowAC,
     getUsersThunk, pageChangeThunk, UnfollowUserThunk, FollowUserThunk
 } from '../../redux/reducer/usersreducer';
-import {Redirect} from "react-router-dom";
+
 import {AuthRedirect} from "../../hoc/AuthRedirect";
 
 

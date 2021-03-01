@@ -4,7 +4,7 @@ const instance = axios.create({
     baseURL:'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
     headers:{
-        "API-KEY": "a90a867e-fd31-4c4a-8bf3-173b8f13fa83"
+        "API-KEY": "235155c1-7feb-4da2-bb9f-4b44542480b1"
     }
 
 });
@@ -35,3 +35,18 @@ export const pageChange = (pageNumber,pageSize) =>
 {
     return instance.get ('users?page='+pageNumber+'&count='+pageSize)
 }
+
+
+export const profileApi =
+    {
+        getStatus(userId)
+        {
+         return   instance.get('profile/status/'+userId)
+        },
+
+        updateStatus(status)
+        {
+            return   instance.put('profile/status/',{status: status})
+        }
+
+    }

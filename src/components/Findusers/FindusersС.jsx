@@ -4,7 +4,7 @@ import classes from './Findusers.module.css';
 import userPhoto from '../../assets/image/user_pic.png';
 import {NavLink} from "react-router-dom";
 import preloader from "../../assets/image/preloader.svg";
-import {Redirect} from "react-router-dom";
+
 
 
 

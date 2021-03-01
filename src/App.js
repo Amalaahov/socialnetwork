@@ -6,7 +6,7 @@ import './App.css';
 
 
 import Header2 from "./components/header2/Header2";
-import Profile from './components/Profile/Profile.jsx';
+import Profile from './components/Profile/ProfileContainer.jsx';
 import Footer from './components/Footer/Footer';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {BrowserRouter, Route} from "react-router-dom";
